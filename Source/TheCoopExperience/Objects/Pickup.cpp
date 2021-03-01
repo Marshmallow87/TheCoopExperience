@@ -49,13 +49,11 @@ void APickup::OnPlayerEnterPickupBox(UPrimitiveComponent* OverlappedComp, AActor
 	if (!ensure(OtherActor != nullptr)) return;
 	if (Cast<ATheCoopExperienceCharacter>(OtherActor))
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Cast to TheCoopExperienceCharacter succesfull"));
 		auto PlayerState = Cast<ATheCoopExperienceCharacter>(OtherActor)->GetPlayerState();
 		Cast<ADefaultPlayerState>(PlayerState)->Gold++;
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Cast to TheCoopExperienceCharacter failed"));
 	}
 	Destroy();
 }
