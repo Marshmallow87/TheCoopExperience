@@ -8,12 +8,9 @@
 #include "Gameplay/DefaultPlayerState.h"
 #include "TheCoopExperienceCharacter.h"
 
-// Sets default values
 APickup::APickup()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	
 	
 	PickupRoot = CreateDefaultSubobject<USceneComponent>(TEXT("PickupRoot"));
 	RootComponent = PickupRoot;
@@ -28,15 +25,12 @@ APickup::APickup()
 	PickupBox->AttachToComponent(PickupRoot, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 }
 
-// Called when the game starts or when spawned
 void APickup::BeginPlay()
 {
 	Super::BeginPlay();
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("A pickup constructor"));
 	
 }
 
-// Called every frame
 void APickup::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -45,12 +39,12 @@ void APickup::Tick(float DeltaTime)
 
 void APickup::OnPlayerEnterPickupBox(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("OnPlayerEnterPickupBox"));
 	if (!ensure(OtherActor != nullptr)) return;
 	if (Cast<ATheCoopExperienceCharacter>(OtherActor))
 	{
 		auto PlayerState = Cast<ATheCoopExperienceCharacter>(OtherActor)->GetPlayerState();
 		Cast<ADefaultPlayerState>(PlayerState)->Gold++;
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Player touched and picked me up"));
 	}
 	else
 	{
