@@ -56,21 +56,6 @@ void ATheCoopExperienceCharacter::SetupPlayerInputComponent(class UInputComponen
 }
 
 
-void ATheCoopExperienceCharacter::OnResetVR()
-{
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
-}
-
-void ATheCoopExperienceCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
-{
-		Jump();
-}
-
-void ATheCoopExperienceCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
-{
-		StopJumping();
-}
-
 void ATheCoopExperienceCharacter::TurnAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
