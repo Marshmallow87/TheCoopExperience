@@ -37,8 +37,8 @@ void ADefaultGameMode::HandleStartingNewPlayer_Implementation(APlayerController*
 				UE_LOG(LogTemp, Warning, TEXT("NewPlayer %s"), *PlayerController->GetName());
 
 				FVector Location(-390.0f, -100.0f, 705.0f);
-				Location.X = FMath::FRand() *1000.0f;
-				Location.Y = FMath::FRand() *1400.0f;
+				Location.X = FMath::FRand() *100.0f;
+				Location.Y = FMath::FRand() *140.0f;
 				Location.Z = (FMath::FRand() + 1.0f) *360.0f;
 				FRotator Rotation(0.0f, 0.0f, 0.0f);
 				FActorSpawnParameters SpawnParams;
