@@ -8,8 +8,8 @@
 
 ADefaultPlayerState::ADefaultPlayerState()
 {
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/HeroCharacter"));
-	static ConstructorHelpers::FClassFinder<APawn> HeroPawnBPClass(TEXT("/Game/HeroCharacter"));
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/CoopExperience/Blueprints/Characters/BP_FirstPersonCharacter"));
+	static ConstructorHelpers::FClassFinder<APawn> HeroPawnBPClass(TEXT("/Game/CoopExperience/Blueprints/Characters/BP_FirstPersonCharacter"));
 	UE_LOG(LogTemp, Warning, TEXT("Iskviestas PlayerState Constructorius"));
 	CurrentPawnClass = PlayerPawnBPClass.Class;
 	HeroClass = HeroPawnBPClass.Class;
