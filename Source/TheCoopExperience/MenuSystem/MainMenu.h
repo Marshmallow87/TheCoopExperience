@@ -46,6 +46,9 @@ private:
 	class UButton* JoinButton;
 
 	UPROPERTY(meta = (BindWidget))
+	class UButton* OptionsButton;
+
+	UPROPERTY(meta = (BindWidget))
 	class UButton* QuitButton;
 
 	UPROPERTY(meta = (BindWidget))
@@ -67,6 +70,9 @@ private:
 	class UWidget* HostMenu;
 
 	UPROPERTY(meta = (BindWidget))
+	class UWidget* OptionsMenu;
+
+	UPROPERTY(meta = (BindWidget))
 	class UEditableTextBox* ServerHostName;
 
 	UPROPERTY(meta = (BindWidget))
@@ -77,6 +83,12 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 	class UPanelWidget* ServerList;
+
+	UPROPERTY(meta = (BindWidget))
+	class USlider* MusicSlider;
+
+	UPROPERTY(meta = (BindWidget))
+	class USlider* SfxSlider;
 
 	UFUNCTION()
 	void HostServer();
@@ -94,7 +106,13 @@ private:
 	void OpenMainMenu();
 
 	UFUNCTION()
+	void OpenOptionsMenu();
+
+	UFUNCTION()
 	void QuitPressed();
+
+	UFUNCTION()
+	void MusicSliderValueChange(float value);
 
 	TOptional<uint32> SelectedIndex;
 

@@ -9,6 +9,7 @@
 #include "Components/WidgetSwitcher.h"
 #include "Components/EditableTextBox.h"
 #include "Components/TextBlock.h"
+#include "Components/Slider.h"
 
 #include "ServerRow.h"
 UMainMenu::UMainMenu(const FObjectInitializer & ObjectInitializer)
@@ -36,6 +37,9 @@ bool UMainMenu::Initialize()
 	if (!ensure(JoinButton != nullptr)) return false;
 	JoinButton->OnClicked.AddDynamic(this, &UMainMenu::OpenJoinMenu);
 
+	if (!ensure(OptionsButton != nullptr)) return false;
+	OptionsButton->OnClicked.AddDynamic(this, &UMainMenu::OpenOptionsMenu);
+
 	if (!ensure(QuitButton != nullptr)) return false;
 	QuitButton->OnClicked.AddDynamic(this, &UMainMenu::QuitPressed);
 
@@ -44,6 +48,9 @@ bool UMainMenu::Initialize()
 
 	if (!ensure(ConfirmJoinMenuButton != nullptr)) return false;
 	ConfirmJoinMenuButton->OnClicked.AddDynamic(this, &UMainMenu::JoinServer);
+
+	if (!ensure(MusicSlider != nullptr)) return false;
+	MusicSlider->OnValueChanged.AddDynamic(this, &UMainMenu::MusicSliderValueChange);
 
 	return true;
 }
@@ -141,6 +148,12 @@ void UMainMenu::OpenMainMenu()
 	if (!ensure(MainMenu != nullptr)) return;
 	MenuSwitcherWidget->SetActiveWidget(MainMenu);
 }
+void UMainMenu::OpenOptionsMenu()
+{
+	if (!ensure(MenuSwitcherWidget != nullptr)) return;
+	if (!ensure(OptionsMenu != nullptr)) return;
+	MenuSwitcherWidget->SetActiveWidget(OptionsMenu);
+}
 
 void UMainMenu::QuitPressed()
 {
@@ -151,4 +164,10 @@ void UMainMenu::QuitPressed()
 	if (!ensure(PlayerController != nullptr)) return;
 
 	PlayerController->ConsoleCommand("quit");
+}
+
+void UMainMenu::MusicSliderValueChange(float value)
+{
+	if (!ensure(MenuSwitcherWidget != nullptr)) return;
+	UE_LOG(LogTemp, Warning, TEXT("Pog keicia"));
 }
