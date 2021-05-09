@@ -52,6 +52,9 @@ bool UMainMenu::Initialize()
 	if (!ensure(MusicSlider != nullptr)) return false;
 	MusicSlider->OnValueChanged.AddDynamic(this, &UMainMenu::MusicSliderValueChange);
 
+	if (!ensure(CancelOptionsMenuButton != nullptr)) return false;
+	CancelOptionsMenuButton->OnClicked.AddDynamic(this, &UMainMenu::OpenMainMenu);
+
 	return true;
 }
 
@@ -168,6 +171,4 @@ void UMainMenu::QuitPressed()
 
 void UMainMenu::MusicSliderValueChange(float value)
 {
-	if (!ensure(MenuSwitcherWidget != nullptr)) return;
-	UE_LOG(LogTemp, Warning, TEXT("Pog keicia"));
 }

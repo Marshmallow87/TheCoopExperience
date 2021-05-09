@@ -90,6 +90,9 @@ private:
 	UPROPERTY(meta = (BindWidget))
 	class USlider* SfxSlider;
 
+	UPROPERTY(meta = (BindWidget))
+	class UButton* CancelOptionsMenuButton;
+
 	UFUNCTION()
 	void HostServer();
 
