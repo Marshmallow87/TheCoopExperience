@@ -23,7 +23,7 @@ public:
 	UClass* HeroClass;
 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Player Stats")
-	float CurrentHealth;
+	float CurrentHealth = 100.0f;
 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Player Stats")
 	float MaxHealth = 100.0f;
