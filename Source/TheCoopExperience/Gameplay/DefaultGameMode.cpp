@@ -83,9 +83,7 @@ void ADefaultGameMode::RespawnPlayer(TSubclassOf<APawn> ClassToSpawn, APlayerCon
 
 	if (IsValid(PlayerState))
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("IsValid ties"));
 		PlayerState->CurrentHealth = PlayerState->MaxHealth;
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("Curr health %f"), PlayerState->CurrentHealth));
 		PlayerState->CurrentPawnClass = ClassToSpawn;
 	}
 	else
